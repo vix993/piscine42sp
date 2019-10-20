@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
@@ -10,7 +11,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int i;
 
@@ -30,7 +31,7 @@ void changetoword(char *num)
        
 	tam = ft_strlen(num);
 
-	if (len == 0)
+	if (tam == 0)
 	{
 		ft_putstr("Error");
 		return;
@@ -38,51 +39,54 @@ void changetoword(char *num)
 
 	char *single[] = { "zero", "one", "two", "three",
 	       		"four", "five", "six", "seven", "eight", "nine" };
-	char *double[] = { "", "ten", "eleven", "twelve",
+	char *Double[] = { "", "ten", "eleven", "twelve",
 	       		"thirteen", "fourteen", "fifteen", "sixteem",
 	       		"seventeen", "eighteen", "nineteen"};
 	char *tenmultiple[] = {"", "", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-	char *tens[] = { "hundred", "thousand", "million", "billion", "trillion", "quadriollon"}
+	char *tens[] = { "hundred", "thousand", "million", "billion", "trillion", "quadriollon"};
 
 	if (tam == 1)
 	{
-		ft_putstr( single[*num - '0']);
+		ft_putstr(single[*num - '0']);
 		return;
 	}
 	while (*num != 0)
 	{
-		if (len >= 3)
+		if (tam >= 3)
 		{
 			if (*num - '0' != 0)
 			{
-			ft_putstr(single[*num - '0']);
-			ft_putstr(tens[len-3])
+//				printf("%s\n", single[*num - '0']);
+//				printf("%s\n", tens[tam - 3]);
+				ft_putstr(single[*num - '0']);
+				ft_putstr(tens[tam-3]);
 			}
-			--len;
+			--tam;
 		}
 		else
 		{
 			if (*num == '1')
 			{
 				sum = (*num - '0' + *(num + 1) == '0');
-				ft_putstr(double[sum]);
+				printf("%s\n", Double[sum]);
+//				ft_putstr(Double[sum]);
 				return;
 			}
 			else if (*num == '2' && *(num + 1) == '0')
 			{
-				(*num == '2' && *(num + 1) == '0')
-				{
-					ft_putstr("twenty");
-					return;
-				}
+				printf("twenty\n");
+//				ft_putstr("twenty");
+				return;
 			}
 			else
 			{
 				i = *num - '0';
-				ft_putstr(i? tensmultiple[i]: "");
+				printf("%s ", i? tenmultiple[i]: "");
+//				ft_putstr(i? tenmultiple[i]: "");
 				++num;
 				if (*num != '0')
-					ft_putstr(single[*num - '0']);
+					printf("%s\n", single[*num - '0']);
+//					ft_putstr(single[*num - '0']);
 			}
 		}
 		++num;
@@ -91,11 +95,14 @@ void changetoword(char *num)
 
 int	main(int argc, char **argv)
 {
-	changetowords("9923");
-	changetowords("523");
-	changetowords("89");
-	changetowords("8989");
-	changetowords("argv");
+	if (argc > 3)
+		return (0);
 
-	return (0)
+	changetoword("9923");
+	changetoword("523");
+	changetoword("20");
+	changetoword("8989");
+	changetoword(argv[1]);
+
+	return (0);
 }
