@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnascime <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 17:35:51 by vnascime          #+#    #+#             */
-/*   Updated: 2019/10/09 17:42:23 by vnascime         ###   ########.fr       */
+/*   Created: 2019/10/07 20:19:02 by vnascime          #+#    #+#             */
+/*   Updated: 2019/10/08 09:27:26 by vnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int i;
+#include <unistd.h>
 
-	i = 0;
-	while (str[i] != '\0')
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_print_numbers(void)
+{
+	char	a;
+
+	a = '0';
+	while (a <= 9)
 	{
-		i++;
+		ft_putchar(a++);
 	}
-	return (i);
 }

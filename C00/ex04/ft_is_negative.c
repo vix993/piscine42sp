@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnascime <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 17:09:38 by vnascime          #+#    #+#             */
-/*   Updated: 2019/10/09 20:37:50 by vnascime         ###   ########.fr       */
+/*   Created: 2019/10/07 12:34:09 by vnascime          #+#    #+#             */
+/*   Updated: 2019/10/08 09:28:24 by vnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_int_tab(int *tab, int size)
-{
-	int i;
-	int temp;
-	int j;
+#include <unistd.h>
 
-	j = 0;
-	while (j < size - 1)
+void	ft_putchar(void)
+{
+	write(1, &c, 1);
+}
+
+void	ft_is_negative(int n)
+{
+	char a;
+
+	if (n < 0)
 	{
-		i = 0;
-		while (i < size - 1)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				temp = tab[i];
-				tab[i] = tab[i + 1];
-				tab[i + 1] = temp;
-			}
-			i++;
-		}
-		j++;
+		a = 'N';
+		ft_putchar(a);
+	}
+	else
+	{
+		a = 'P';
+		ft_putchar(a);
 	}
 }
